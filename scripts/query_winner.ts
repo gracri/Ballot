@@ -3,7 +3,7 @@ import { Ballot__factory } from "../typechain-types";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-const CONTRACT_ADDRESS = "0xC7cc3cE29BD7294B6B7CBD1aBe6AAeFa72961faB";
+const CONTRACT_ADDRESS = "0xAbf721225eB82Aefa25319C963c1b73537D48796";
 
 
 async function main() {
@@ -30,11 +30,9 @@ async function main() {
   //Query winning proposal
   console.log("Query winning proposal");
   const winningProposal = await ballotContract.winnerName();
-  console.log({winningProposal});
-
+  const name = ethers.utils.parseBytes32String(winningProposal);
+	console.log("name:", name);
 }
-
-
 
 main().catch((error) => {
   console.error(error);
